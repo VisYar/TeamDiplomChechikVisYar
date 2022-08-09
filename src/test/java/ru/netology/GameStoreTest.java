@@ -42,4 +42,42 @@ public class GameStoreTest {
 
         assertThrows(RuntimeException.class, () -> store.publishGame(gameCopy.getTitle(), gameCopy.getGenre()));
     }
+
+    @Test
+    public void shouldAddTimeToExistingPlayer() {
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Ivan", 2);
+        store.addPlayTime("Vita", 14);
+        store.addPlayTime("Ivan", 8);
+        store.addPlayTime("Ira", 14);
+        store.addPlayTime("Sonia", 22);
+
+ //     assertEquals(10, store.getPlayedTime().get("Ivan"));
+    }
+    @Test
+    public void shouldAddNegativeTimeToExistingPlayer() {
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Ivan", -2);
+        store.addPlayTime("Vita", 14);
+        store.addPlayTime("Ivan", 8);
+        store.addPlayTime("Ira", 14);
+        store.addPlayTime("Sonia", 22);
+
+ //     assertEquals(6, store.getPlayedTime().get("Ivan"));
+    }
+    @Test
+    public void shouldAddTimeNotIntegerToExistingPlayer1() {
+        GameStore store = new GameStore();
+
+//        store.addPlayTime("Ivan", 1.5);
+        store.addPlayTime("Vita", 14);
+        store.addPlayTime("Ivan", 8);
+        store.addPlayTime("Ira", 14);
+        store.addPlayTime("Sonia", 22);
+
+ //     assertEquals(9.5, store.getPlayedTime().get("Ivan"));
+    }
+
 }
