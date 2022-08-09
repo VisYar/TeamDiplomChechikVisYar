@@ -98,6 +98,7 @@ public class GameStoreTest {
     public void shouldGetMostPlayerIfPlayedForOneHour() {
 
         store.addPlayTime("Ivan", 1);
+        store.addPlayTime("Vita", 0);
 
         assertEquals("Ivan", store.getMostPlayer());
     }
