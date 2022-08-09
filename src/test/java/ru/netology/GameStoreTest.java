@@ -53,8 +53,9 @@ public class GameStoreTest {
         store.addPlayTime("Ira", 14);
         store.addPlayTime("Sonia", 22);
 
- //     assertEquals(10, store.getPlayedTime().get("Ivan"));
+        //     assertEquals(10, store.getPlayedTime().get("Ivan"));
     }
+
     @Test
     public void shouldAddNegativeTimeToExistingPlayer() {
         GameStore store = new GameStore();
@@ -65,8 +66,9 @@ public class GameStoreTest {
         store.addPlayTime("Ira", 14);
         store.addPlayTime("Sonia", 22);
 
- //     assertEquals(6, store.getPlayedTime().get("Ivan"));
+        //     assertEquals(6, store.getPlayedTime().get("Ivan"));
     }
+
     @Test
     public void shouldAddTimeNotIntegerToExistingPlayer1() {
         GameStore store = new GameStore();
@@ -77,7 +79,51 @@ public class GameStoreTest {
         store.addPlayTime("Ira", 14);
         store.addPlayTime("Sonia", 22);
 
- //     assertEquals(9.5, store.getPlayedTime().get("Ivan"));
+        //     assertEquals(9.5, store.getPlayedTime().get("Ivan"));
+    }
+
+    @Test
+    public void shouldGetMostPlayerIfPlayersDoNotRepeat() {
+        GameStore store = new GameStore();
+        store.addPlayTime("Ivan", 2);
+        store.addPlayTime("Vita", 14);
+        store.addPlayTime("Ira", 21);
+        store.addPlayTime("Sonia", 22);
+        assertEquals("Sonia", store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldGetMostPlayerIfPlayersDoRepeat() {
+        GameStore store = new GameStore();
+        store.addPlayTime("Ivan", 21);
+        store.addPlayTime("Vita", 14);
+        store.addPlayTime("Ivan", 12);
+        store.addPlayTime("Sonia", 22);
+        assertEquals("Ivan", store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldGetMostPlayerIfPlayersAreEqual () {
+        GameStore store = new GameStore();
+        store.addPlayTime("Ivan", 2);
+        store.addPlayTime("Vita", 2);
+
+        assertEquals(null, store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldGetMostPlayerIfPlayedForOneHour() {
+        GameStore store = new GameStore();
+        store.addPlayTime("Ivan", 1);
+
+        assertEquals("Ivan", store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldGetMostNotPlayer() {
+        GameStore store = new GameStore();
+
+        assertEquals(null, store.getMostPlayer());
     }
 
 }
