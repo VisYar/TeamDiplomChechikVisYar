@@ -103,7 +103,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void shouldGetMostPlayerIfPlayersAreEqual () {
+    public void shouldGetMostPlayerIfPlayersAreEqual() {
         GameStore store = new GameStore();
         store.addPlayTime("Ivan", 2);
         store.addPlayTime("Vita", 2);
@@ -126,4 +126,29 @@ public class GameStoreTest {
         assertEquals(null, store.getMostPlayer());
     }
 
+    @Test
+    public void shouldGetSumPlayedTime() {
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Vita", 15);
+        store.addPlayTime("Ivan", 5);
+        store.addPlayTime("Sonia", 32);
+
+        assertEquals(52, store.getSumPlayedTime());
+    }
+
+    @Test
+    public void shouldGetSumOnePlayedTime() {
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Vita", 15);
+        assertEquals(15, store.getSumPlayedTime());
+    }
+
+    @Test
+    public void shouldGetSumPlayedTimeIfAreNoPlayers() {
+        GameStore store = new GameStore();
+
+        assertEquals(0, store.getSumPlayedTime());
+    }
 }
