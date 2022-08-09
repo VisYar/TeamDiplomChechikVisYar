@@ -9,6 +9,7 @@ public class GameStoreTest {
     @Test
     public void shouldAddOneGame() {
         GameStore store = new GameStore();
+
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         assertTrue(store.containsGame(game));
@@ -17,6 +18,7 @@ public class GameStoreTest {
     @Test
     public void shouldContainsLastGames() {
         GameStore store = new GameStore();
+
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Game game1 = store.publishGame("Minecraft", "Симулятор");
         Game game2 = store.publishGame("F1", "Гонки");
@@ -27,6 +29,17 @@ public class GameStoreTest {
     @Test
     public void shouldAddGameNotFound() {
         GameStore store = new GameStore();
+
         assertFalse(store.containsGame(null));
+    }
+
+    @Test
+    void shouldAddGameThatAlreadyExists() {
+        GameStore store = new GameStore();
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game gameCopy = new Game("Нетология Баттл Онлайн", "Аркады", store);
+
+        assertThrows(RuntimeException.class, () -> store.publishGame(gameCopy.getTitle(), gameCopy.getGenre()));
     }
 }
