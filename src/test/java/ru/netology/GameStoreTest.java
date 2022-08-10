@@ -40,30 +40,6 @@ public class GameStoreTest {
     }
 
     @Test
-    public void shouldAddTimeToExistingPlayer() {
-
-        store.addPlayTime("Ivan", 2);
-        store.addPlayTime("Vita", 14);
-        store.addPlayTime("Ivan", 8);
-        store.addPlayTime("Ira", 14);
-        store.addPlayTime("Sonia", 22);
-
- //     assertEquals(10, store.getPlayedTime().get("Ivan"));
-    }
-
-    @Test
-    public void shouldAddNegativeTimeToExistingPlayer() {
-
-        store.addPlayTime("Ivan", -2);
-        store.addPlayTime("Vita", 14);
-        store.addPlayTime("Ivan", 8);
-        store.addPlayTime("Ira", 14);
-        store.addPlayTime("Sonia", 22);
-
- //     assertEquals(6, store.getPlayedTime().get("Ivan"));
-    }
-
-    @Test
     public void shouldGetMostPlayerIfPlayersDoNotRepeat() {
 
         store.addPlayTime("Ivan", 2);
