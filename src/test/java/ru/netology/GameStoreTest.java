@@ -67,7 +67,7 @@ public class GameStoreTest {
         store.addPlayTime("Ivan", 2);
         store.addPlayTime("Vita", 2);
 
-        assertEquals(null, store.getMostPlayer());
+        assertEquals("Ivan", store.getMostPlayer());
     }
 
     @Test
