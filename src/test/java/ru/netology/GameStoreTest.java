@@ -17,6 +17,14 @@ public class GameStoreTest {
 
         assertTrue(store.containsGame(game));
     }
+    @Test
+    public void shouldAddGameThatAlreadyExists() {
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game gameCopy = new Game("Нетология Баттл Онлайн", "Аркады", store);
+
+        assertThrows(RuntimeException.class, () -> store.publishGame(gameCopy.getTitle(), gameCopy.getGenre()));
+    }
 
     @Test
     public void shouldContainsLastGames() {
