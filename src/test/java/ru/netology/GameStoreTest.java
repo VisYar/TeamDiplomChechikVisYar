@@ -1,8 +1,11 @@
 package ru.netology;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStoreTest {
     GameStore store = new GameStore();
@@ -13,6 +16,14 @@ public class GameStoreTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         assertTrue(store.containsGame(game));
+    }
+    @Test
+    public void shouldAddGameThatAlreadyExists() {
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game gameCopy = new Game("Нетология Баттл Онлайн", "Аркады", store);
+
+        assertThrows(RuntimeException.class, () -> store.publishGame(gameCopy.getTitle(), gameCopy.getGenre()));
     }
 
     @Test
@@ -30,16 +41,25 @@ public class GameStoreTest {
         assertFalse(store.containsGame(null));
     }
 
+
     @Test
-    public void shouldAddGameThatAlreadyExists() {
 
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Game gameCopy = new Game("Нетология Баттл Онлайн", "Аркады", store);
+    public void shouldAddTimeToExistingPlayer() {
 
-        assertThrows(RuntimeException.class, () -> store.publishGame(gameCopy.getTitle(), gameCopy.getGenre()));
+        store.addPlayTime("Ivan", 2);
+
+        store.addPlayTime("Ivan", 8);
+
+        int expected = 10;
+        int actual = store.getSumPlayedTime();
+
+        assertEquals(expected, actual);
     }
 
+
     @Test
+
+
     public void shouldGetMostPlayerIfPlayersDoNotRepeat() {
 
         store.addPlayTime("Ivan", 2);
@@ -67,7 +87,12 @@ public class GameStoreTest {
         store.addPlayTime("Ivan", 2);
         store.addPlayTime("Vita", 2);
 
-        assertEquals("Ivan", store.getMostPlayer());
+
+
+       assertEquals("Ivan",  store.getMostPlayer());
+
+     
+
     }
 
     @Test
