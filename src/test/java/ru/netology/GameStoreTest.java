@@ -43,6 +43,7 @@ public class GameStoreTest {
 
 
     @Test
+
     public void shouldAddTimeToExistingPlayer() {
 
         store.addPlayTime("Ivan", 2);
@@ -57,6 +58,8 @@ public class GameStoreTest {
 
 
     @Test
+
+
     public void shouldGetMostPlayerIfPlayersDoNotRepeat() {
 
         store.addPlayTime("Ivan", 2);
@@ -85,7 +88,11 @@ public class GameStoreTest {
         store.addPlayTime("Vita", 2);
 
 
+
        assertEquals("Ivan",  store.getMostPlayer());
+
+     
+
     }
 
     @Test
