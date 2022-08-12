@@ -17,6 +17,7 @@ public class GameStoreTest {
 
         assertTrue(store.containsGame(game));
     }
+
     @Test
     public void shouldAddGameThatAlreadyExists() {
 
@@ -41,25 +42,7 @@ public class GameStoreTest {
         assertFalse(store.containsGame(null));
     }
 
-
     @Test
-
-    public void shouldAddTimeToExistingPlayer() {
-
-        store.addPlayTime("Ivan", 2);
-
-        store.addPlayTime("Ivan", 8);
-
-        int expected = 10;
-        int actual = store.getSumPlayedTime();
-
-        assertEquals(expected, actual);
-    }
-
-
-    @Test
-
-
     public void shouldGetMostPlayerIfPlayersDoNotRepeat() {
 
         store.addPlayTime("Ivan", 2);
@@ -87,12 +70,7 @@ public class GameStoreTest {
         store.addPlayTime("Ivan", 2);
         store.addPlayTime("Vita", 2);
 
-
-
-       assertEquals("Ivan",  store.getMostPlayer());
-
-     
-
+        assertEquals("Ivan", store.getMostPlayer());
     }
 
     @Test

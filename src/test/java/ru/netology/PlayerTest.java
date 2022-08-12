@@ -17,7 +17,6 @@ public class PlayerTest {
     @Test
     public void shouldSumGenreIfOneGame() {
 
-
         player.installGame(game);
         player.play(game, 3);
 
@@ -29,9 +28,7 @@ public class PlayerTest {
     @Test
     public void shouldSumGenreIfInstallAndNotPlay() {
 
-
         player.installGame(game);
-
 
         int expected = 0;
         int actual = player.sumGenre(game.getGenre());
@@ -41,13 +38,11 @@ public class PlayerTest {
     @Test
     public void playedSeveralTime() {
 
-
         player.installGame(game);
         player.installGame(game2);
         player.play(game, 3);
         player.play(game2, 2);
         player.play(game, 5);
-
 
         int expected = 8;
         int actual = player.sumGenre(game.getGenre());
@@ -57,11 +52,7 @@ public class PlayerTest {
     @Test
     public void outputRuntimeExceptionGameNotInstall() {
 
-
-        assertThrows(RuntimeException.class, () -> {
-
-            player.play(game, 5);
-        });
+        assertThrows(RuntimeException.class, () -> player.play(game, 5));
     }
 
     @Test
@@ -81,13 +72,10 @@ public class PlayerTest {
         int expected = 0;
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
-
-
     }
 
     @Test
     public void mostPlayerByGenreGamePlayed() {
-
 
         player.installGame(game);
         player.installGame(game2);
@@ -99,16 +87,13 @@ public class PlayerTest {
         player.play(game3, 3);
         player.play(game4, 7);
 
-
         Game expected = game4;
         Game actual = player.mostPlayerByGenre("РПГ");
-
         assertEquals(expected, actual);
     }
 
     @Test
     public void mostPlayerByNotGenreGamePlayed() {
-
 
         player.installGame(game);
         player.installGame(game2);
@@ -121,10 +106,8 @@ public class PlayerTest {
         player.play(game3, 3);
         player.play(game5, 7);
 
-
         Game expected = null;
         Game actual = player.mostPlayerByGenre("РПГ");
-
         assertEquals(expected, actual);
     }
 }
